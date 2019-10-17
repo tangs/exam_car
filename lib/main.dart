@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   List<Cell> getData() {
-    print(this.keyword);
+    // print(this.keyword);
     if (this.keyword == null || this.keyword.length == 0) {
       return datas;
     }
@@ -172,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage>
                 keyboardType: TextInputType.url,
                 initialValue: this.keyword,
                 onChanged:(txt) {
-                  print(txt);
+                  // print(txt);
                   this.keyword = txt;
                   this.update();
                 },
@@ -192,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage>
                     unselectedLabelColor: Colors.green,
                     labelColor: Colors.orange,
                     onTap: (idx) {
-                      print(idx);
+                      // print(idx);
                       this.type = idx;
                       this.update();
                     },
