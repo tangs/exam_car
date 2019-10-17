@@ -78,18 +78,26 @@ class _MyHomePageState extends State<MyHomePage>
     loadConfig('assets/JUDGE.csv', 2);
   }
 
-  getData() {
+  List<Cell> getData() {
     print(this.keyword);
     if (this.keyword == null || this.keyword.length == 0) {
       return datas;
     }
     var key = this.keyword.toLowerCase();
     List<Cell> curDatas = [];
-    for (var data in datas) {
-      if (data.pinyin.indexOf(key) != -1) {
-        curDatas.add((data));
+    for (var cell in datas) {
+      if (type != 3 && type != cell.type) {
+        continue;
+      }
+      if (cell.pinyin.indexOf(key) != -1) {
+        curDatas.add((cell));
       }
     }
+    curDatas.sort((cell1, cell2) {
+      var num1 = cell1.pinyin.indexOf(key);
+      var num2 = cell2.pinyin.indexOf(key);
+      return num1 - num2;
+    });
     return curDatas;
   }
 
@@ -131,6 +139,19 @@ class _MyHomePageState extends State<MyHomePage>
             )
           );
         }
+        children.add(
+          Row(children: <Widget>[
+            Expanded(
+              child: Text(
+                'keyword:' + data.pinyin.toUpperCase(),
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0xff777700)
+                ),
+              ),
+            ),],
+          )
+        );
         children.add(Padding(padding: EdgeInsets.all(20),));
         return Column(
           mainAxisAlignment: MainAxisAlignment.start,
