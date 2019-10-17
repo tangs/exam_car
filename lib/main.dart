@@ -169,6 +169,7 @@ class _MyHomePageState extends State<MyHomePage>
           children: <Widget>[            
             Expanded(
               child: TextFormField(
+                keyboardType: TextInputType.url,
                 initialValue: this.keyword,
                 onChanged:(txt) {
                   print(txt);
