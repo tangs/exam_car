@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'content.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,12 +35,17 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
+    var content1 = ContentList();
     return Scaffold(
       appBar: AppBar(
         title: Row(
           children: <Widget>[            
             Expanded(
-              child: TextFormField(),
+              child: TextFormField(
+                onChanged:(txt) {
+                  content1.
+                },
+              ),
             ),
           ],
         ),
@@ -70,9 +76,7 @@ class _MyHomePageState extends State<MyHomePage>
               ],
             ),
             Expanded(
-              child: ListView(
-
-              ),
+              child: content1,
             )
           ],
         ),
